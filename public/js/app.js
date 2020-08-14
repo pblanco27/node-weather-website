@@ -12,6 +12,7 @@ weatherForm.addEventListener('submit', (event) => {
 
     msg1.textContent = "Loading..."
     msg2.textContent = ""
+    img.setAttribute('src', '')
 
     fetch(url).then((res) => {
         res.json().then((data) => {
@@ -22,5 +23,5 @@ weatherForm.addEventListener('submit', (event) => {
             msg2.textContent = data.forecast.forecastInfo
             img.setAttribute('src', data.forecast.forecastImgUrl)
         })
-    }) 
+    })
 })

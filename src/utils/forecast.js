@@ -10,9 +10,10 @@ const forecast = (lat, lng, callback) => {
         } else if (response.body.error) {
             callback(response.body.error.info, undefined)
         } else {
-            const current = response.body.current;
-            const forecastInfo = `${current.weather_descriptions[0]}. This is currently ${current.temperature} degrees out. It feels like ${current.feelslike} degrees out`
-            const forecastImgUrl = current.weather_icons[0]
+            const data = response.body.current;
+            const forecastInfo = data.weather_descriptions[0] + ". This is currently " + data.temperature + " degrees out. " +
+                "It feels like " + data.feelslike + " degrees out. The humidity is " + data.humidity + "%."
+            const forecastImgUrl = data.weather_icons[0]
             callback(undefined, { forecastInfo, forecastImgUrl })
         }
     })
